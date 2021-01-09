@@ -17,27 +17,16 @@ import AboutMe from '../about-me'
 import NavBar from '../nav-bar'
 import Weather from '../weather'
 import UserTable from '../user-table'
+import UserInfo from '../user-table/user-info'
 
-
-const useStyles = makeStyles((theme) => ({
-    test: {
-        margin: '10px',
-        fontSize: '1.5rem'
-    },
-    borderLeft: {
-        borderLeft: '0.2rem solid',
-        margin: '10px',
-        fontSize: '1.5rem'
-    }
-}))
 
 function App() {
-    const classes = useStyles()
     return (
         <div className="App">
             <NavBar/>
             <div>
                 <Route exact path='/usertable' component={UserTable}/>
+                <Route exact path='/userinfo' component={UserInfo}/>
                 <Route exact path='/' component={AboutMe}/>
                 <Route exact path='/weather' component={Weather}/>
             </div>
