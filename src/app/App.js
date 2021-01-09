@@ -17,7 +17,7 @@ import AboutMe from '../about-me'
 import NavBar from '../nav-bar'
 import Weather from '../weather'
 import UserTable from '../user-table'
-import UserInfo from '../user-table/user-info'
+
 
 
 function App() {
@@ -26,9 +26,8 @@ function App() {
             <NavBar/>
             <div>
                 <Route exact path='/usertable' component={UserTable}/>
-                <Route exact path='/userinfo' component={UserInfo}/>
-                <Route exact path='/' component={AboutMe}/>
                 <Route exact path='/weather' component={Weather}/>
+                <Route exact path='/' component={AboutMe}/>
             </div>
         </div>
     )

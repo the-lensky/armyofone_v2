@@ -27,15 +27,6 @@ const NavBar = () => {
                         >USER TABLE
                         </Button>
                     </Link>
-
-                    <Link
-                        to=''
-                        className='main'
-                    >
-                        <Button
-                            endIcon={<InfoIcon/>}
-                        > ABOUT ME </Button>
-                    </Link>
                     <Link
                         to='weather'
                         className='main'
@@ -43,6 +34,14 @@ const NavBar = () => {
                         <Button
                             endIcon={<WbSunnyIcon/>}
                         >WEATHER</Button>
+                    </Link>
+                    <Link
+                        to=''
+                        className='main'
+                    >
+                        <Button
+                            endIcon={<InfoIcon/>}
+                        > ABOUT ME </Button>
                     </Link>
                 </Toolbar>
             </AppBar>
