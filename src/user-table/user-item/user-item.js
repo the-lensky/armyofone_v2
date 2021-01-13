@@ -1,48 +1,45 @@
 import React from 'react'
 import './user-item.css'
+import Table from 'react-bootstrap/Table'
 
 const UserItem = ({users, removeUserHandler}) => {
     return (
-        <h1>ghbdtn</h1>
-        // <TableContainer>
-        //     <TableContainer component={Paper}>
-        //         <Table size="medium" aria-label="a dense table">
-        //             <TableHead>
-        //                 <TableRow>
-        //                     <TableCell align="center">User's id</TableCell>
-        //                     <TableCell align="center">Name</TableCell>
-        //                     <TableCell align="center">City</TableCell>
-        //                     <TableCell align="center">Phone</TableCell>
-        //                     <TableCell align="center">Website</TableCell>
-        //                     <TableCell align="center">Deleted</TableCell>
-        //                 </TableRow>
-        //             </TableHead>
-        //             <TableBody>
-        //                 {users.map((user, idx) => {
-        //                     return (
-        //                         <TableRow key={idx}>
-        //                             <TableCell align="center">{idx + 1} </TableCell>
-        //                             <TableCell align="center">{user.name}</TableCell>
-        //                             <TableCell align="center">{user.address.city}</TableCell>
-        //                             <TableCell align="center">{user.phone}</TableCell>
-        //                             <TableCell align="center">{user.website}</TableCell>
-        //                             <TableCell align="center" className='main'>
-        //                                 <div className='miniflex'>
-        //                                     <DeleteForeverIcon
-        //                                         style={{color:'#f50057'}}
-        //                                         className='icon'
-        //                                         fontSize='small'
-        //                                         onClick={() => removeUserHandler(user.id)}
-        //                                     />
-        //                                 </div>
-        //                             </TableCell>
-        //                         </TableRow>
-        //                     )
-        //                 })}
-        //             </TableBody>
-        //         </Table>
-        //     </TableContainer>
-        // </TableContainer>
+        <Table hover>
+            <thead>
+            <tr>
+                <th className='text-center'>User's id</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Company</th>
+                <th>Website</th>
+                <th className='text-center'>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {users.map((user, idx) => {
+                return (
+                    <tr key={idx}>
+                        <td className='text-center'>{idx+1}</td>
+                        <td>{user.name}</td>
+                        <td>{user.address.city}</td>
+                        <td>{user.phone}</td>
+                        <td>{user.company.name}</td>
+                        <td>{user.website}</td>
+                        <td
+                            onClick={() => removeUserHandler(user.id)}
+                            className='text-center'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 className="bi bi-trash-fill icon" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                            </svg>
+                        </td>
+                    </tr>
+                )
+            })}
+            </tbody>
+        </Table>
     )
 }
 

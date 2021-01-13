@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import UserItem from './user-item/user-item'
 import './user-table.css'
+import {Button,Spinner} from 'react-bootstrap'
 
 
 const API_URL = 'https://jsonplaceholder.typicode.com/users'
@@ -11,7 +12,7 @@ const UserTable = () => {
 
     const [users, getUsers] = useState([])
     const [loadingData, setLoadingData] = useState(false)
-    const [showButton, setShowButton] = useState(true)
+    const [showButton, setShowButton] = useState(false)
 
     useEffect(() => {
         if (!showButton) {
@@ -38,21 +39,19 @@ const UserTable = () => {
 
     if (showButton) {
         return (
-            <div>
-                <button
+            <div className='btn-center'>
+                <Button
                     onClick={() => setShowButton(false)}>
                     Push me
-                </button>
+                </Button>
             </div>
         )
     }
 
     if (loadingData) {
         return (
-            <div>
-                <h1>
-                    Loading...
-                </h1>
+            <div className='btn-center'>
+                <Spinner animation="grow" variant="primary" />
             </div>
         )
     }
@@ -65,7 +64,6 @@ const UserTable = () => {
             />
         </div>
     )
-
 }
 
 export default UserTable
