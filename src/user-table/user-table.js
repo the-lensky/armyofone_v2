@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import UserItem from './user-item/user-item'
 import './user-table.css'
-import {Button,Spinner} from 'react-bootstrap'
+import {Button, Spinner} from 'react-bootstrap'
+import UserEdit from './user-edit'
 
 
 const API_URL = 'https://jsonplaceholder.typicode.com/users'
@@ -51,7 +52,7 @@ const UserTable = () => {
     if (loadingData) {
         return (
             <div className='btn-center'>
-                <Spinner animation="grow" variant="primary" />
+                <Spinner animation="grow" variant="primary"/>
             </div>
         )
     }
@@ -62,6 +63,7 @@ const UserTable = () => {
                 users={users}
                 removeUserHandler={removeUserHandler}
             />
+
         </div>
     )
 }
