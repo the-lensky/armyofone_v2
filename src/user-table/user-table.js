@@ -3,7 +3,6 @@ import axios from 'axios'
 import UserItem from './user-item/user-item'
 import './user-table.css'
 import {Button, Spinner} from 'react-bootstrap'
-import UserEdit from './user-edit'
 
 
 const API_URL = 'https://jsonplaceholder.typicode.com/users'
@@ -14,6 +13,7 @@ const UserTable = () => {
     const [users, getUsers] = useState([])
     const [loadingData, setLoadingData] = useState(false)
     const [showButton, setShowButton] = useState(false)
+
 
     useEffect(() => {
         if (!showButton) {
@@ -63,7 +63,6 @@ const UserTable = () => {
                 users={users}
                 removeUserHandler={removeUserHandler}
             />
-
         </div>
     )
 }

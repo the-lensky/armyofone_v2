@@ -1,7 +1,7 @@
 import React from 'react'
 import './nav-bar.css'
 import {Link} from 'react-router-dom'
-import {Navbar, Nav, Button, Row} from 'react-bootstrap'
+import {Navbar, Nav, Button} from 'react-bootstrap'
 
 
 const NavBar = () => {
@@ -11,7 +11,7 @@ const NavBar = () => {
             <Navbar bg="primary" variant="dark">
                 <Navbar.Brand className='brand'>ARMYOFONE_V2</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Link to='usertable'>
+                    <Link exact to='/usertable'>
                         <Button className='border-left'>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  width="20"
@@ -27,7 +27,7 @@ const NavBar = () => {
                             USERTABLE
                         </Button>
                     </Link>
-                    <Link to='todolist'>
+                    <Link to='/todolist'>
                         <Button className='border-left'>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  width="20"
@@ -45,7 +45,7 @@ const NavBar = () => {
                             TODOLIST
                         </Button>
                     </Link>
-                    <Link to=''>
+                    <Link to='/'>
                         <Button className='border-left'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                              className="bi bi-file-person sub mr-1" viewBox="0 0 16 16">
@@ -56,7 +56,7 @@ const NavBar = () => {
                         ABOUT ME
                     </Button>
                     </Link>
-                    <Link to='weather'>
+                    <Link to='/weather'>
                         <Button className='border-left'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                  className="bi bi-brightness-high sub mr-1" viewBox="0 0 16 16">

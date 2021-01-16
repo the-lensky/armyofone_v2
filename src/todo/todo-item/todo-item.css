@@ -1,0 +1,25 @@
+.todoItem {
+    display: flex;
+    align-content: center;
+    cursor: pointer;
+    margin: 0 0 0 3rem;
+    padding: 0;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.list-group {
+    width: 600px;
+    margin: 0 auto;
+}
+.todo-header {
+    margin: 1.5rem 0;
+    color: cornflowerblue;
+}

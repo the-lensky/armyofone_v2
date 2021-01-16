@@ -1,22 +1,22 @@
 import React from 'react'
 import './user-item.css'
 import Table from 'react-bootstrap/Table'
-import UserEdit from '../user-edit'
-import {Link} from 'react-router-dom'
-import EditUserTEST from '../user-edit/user-editTEST'
 
 const UserItem = ({users, removeUserHandler}) => {
-    console.log(users)
+
+
+
+
     return (
         <>
-            <Table hover size='sm'>
+            <Table hover>
                 <thead>
                 <tr>
                     <th className='text-center'>User's id</th>
                     <th>Name</th>
-                    {/*<th>City</th>*/}
+                    <th>City</th>
                     <th>Phone</th>
-                    {/*<th>Company</th>*/}
+                    <th>Company</th>
                     <th>Email</th>
                     <th className='text-center'>Delete</th>
                 </tr>
@@ -27,21 +27,14 @@ const UserItem = ({users, removeUserHandler}) => {
                         <tr key={idx}>
                             <td className='text-center'>{idx + 1}</td>
                             <td>{user.name}</td>
-                            {/*<td>{user.address.city}</td>*/}
+                            <td>{user.address.city}</td>
                             <td>{user.phone}</td>
-                            {/*<td>{user.company.name}</td>*/}
+                            <td>{user.company.name}</td>
                             <td>{user.email}</td>
 
                             <td
                                 onClick={() => removeUserHandler(user.id)}
                                 className='text-center'>
-                                <Link
-                                    users={users}
-                                    class="btn btn-outline-primary mr-2"
-                                    to={`/usertable/edit/${idx + 1}`}
-                                >
-                                    Edit
-                                </Link>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      className="bi bi-trash-fill icon" viewBox="0 0 16 16">
                                     <path
@@ -53,7 +46,6 @@ const UserItem = ({users, removeUserHandler}) => {
                 })}
                 </tbody>
             </Table>
-            <EditUserTEST users={users} />
         </>
     )
 }
