@@ -4,9 +4,6 @@ import Table from 'react-bootstrap/Table'
 
 const UserItem = ({users, removeUserHandler}) => {
 
-
-
-
     return (
         <>
             <Table hover>

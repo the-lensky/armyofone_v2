@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import TodoItem from '../todo-item'
 import './todo-list.css'
-import {FormGroup, Button, Container, FormControl, InputGroup, Form} from 'react-bootstrap'
+import {Tooltip, Overlay, Button, Container, Form} from 'react-bootstrap'
 
-
-const API_URL = 'https://jsonplaceholder.typicode.com/todos'
 
 const TodoList = () => {
 
@@ -14,8 +12,30 @@ const TodoList = () => {
         {id: 3, text: 'Пригласить Катю', isComlete: false}
     ])
     const [inputValue, setInputValue] = useState('')
-    const [btnDisable, setBtnDisable] = useState(true)
+    const [unCompletedTodos, setUncompletedTodos] = useState(() => {
+        const filtred = todos.filter(todo => !todo.isComlete)
+        return filtred.length
+    })
+    const [showToolTip, setShowToolTip] = useState(false)
+    const [disableBtn, setDisableBtn] = useState(true)
 
+    const calculateUnCompletedTodos = () => {
+        const filtredTodos = todos.filter(todo => !todo.isComlete)
+        console.log(filtredTodos.length)
+        setUncompletedTodos(filtredTodos.length)
+    }
+
+    useEffect(() => {
+        calculateUnCompletedTodos()
+    }, [todos])
+
+    const btn = useRef(null)
+
+    useEffect(() => {
+        if (inputValue > 5) {
+            setDisableBtn(false)
+        }
+    }, [inputValue])
 
     const toogleCompletedHandler = (id) => {
         setTodos(todos.map((todo) => {
@@ -25,7 +45,6 @@ const TodoList = () => {
             return todo
         }))
     }
-
 
     const addTodoHandler = (inputValue) => {
         setTodos([
@@ -42,22 +61,18 @@ const TodoList = () => {
         setInputValue(e.target.value)
     }
 
-
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        if (inputValue.trim() && inputValue.length >5) {
+        if (inputValue.trim() && inputValue.length > 5) {
             addTodoHandler(inputValue)
+            setDisableBtn(true)
             setInputValue('')
         }
     }
 
-    // if(inputValue.length>5){
-    //     setBtnDisable(false)
-    // }
-
     return (
         <Container style={{margin: '0 auto', width: '600px'}}>
-            <h3 className='todo-header'>TODO LIST</h3>
+            <h3 className='todo-header'>I have {unCompletedTodos} uncompleted todos..</h3>
             {todos.map((todo, id) => {
                 return (
                     <TodoItem
@@ -79,14 +94,36 @@ const TodoList = () => {
                         onChange={handleChangeInputValue}
                         type="text"/>
                 </Form.Group>
-                <Button
-                    style={{height: 'fit-content',width:'100px'}}
-                    variant="primary"
-                    type="submit"
-                    disabled={inputValue.length > 5 ? false : true}
-                >
-                    Submit
-                </Button>
+                <div
+                    onMouseEnter={() => setShowToolTip(true)}
+                    onMouseLeave={() => setShowToolTip(false)}>
+                    <Button
+                        className='btn'
+                        style={{}}
+                        variant="primary"
+                        type="submit"
+                        disabled={inputValue.length < 5}
+                        ref={btn}
+                    >
+                        Submit
+                    </Button>
+                    {
+                        disableBtn
+                            ? <Overlay target={btn.current} show={showToolTip} placement="bottom">
+                                {(props) => (
+                                    <Tooltip
+                                        className="tooltip"
+                                        {...props}
+                                    >
+                                        Minimum lenth of todos is 5 simbols..
+                                    </Tooltip>
+                                )}
+                            </Overlay>
+                            : <p> dasasddas </p>
+                    }
+
+                </div>
+
             </Form>
         </Container>
     )

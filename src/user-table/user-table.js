@@ -12,8 +12,7 @@ const UserTable = () => {
 
     const [users, getUsers] = useState([])
     const [loadingData, setLoadingData] = useState(false)
-    const [showButton, setShowButton] = useState(false)
-
+    const [showButton, setShowButton] = useState(true)
 
     useEffect(() => {
         if (!showButton) {
@@ -63,6 +62,7 @@ const UserTable = () => {
                 users={users}
                 removeUserHandler={removeUserHandler}
             />
+
         </div>
     )
 }
