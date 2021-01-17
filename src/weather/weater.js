@@ -57,7 +57,7 @@ const Weather = () => {
     return (
         <Container>
             <WeatherContext.Provider value={{fetchWeather, city, weather}}>
-                <div>dasd
+                <div>JVUE
                     <WeatherSearch/>
                     {/*<Temperature />*/}
                 </div>
