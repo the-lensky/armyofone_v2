@@ -2,15 +2,14 @@ import React, {useEffect, useRef, useState} from 'react'
 import TodoItem from '../todo-item'
 import './todo-list.css'
 import {Tooltip, Overlay, Button, Container, Form} from 'react-bootstrap'
+import {v4 as uuidv4} from 'uuid'
 
 
 const TodoList = () => {
 
-    const [todos, setTodos] = useState([
-        {id: 1, text: 'Позвонить Ленке', isComlete: false},
-        {id: 2, text: 'Написать Ксюше', isComlete: true},
-        {id: 3, text: 'Пригласить Катю', isComlete: false}
-    ])
+    const localTodos = JSON.parse(localStorage.getItem('todos')) || {}
+
+    const [todos, setTodos] = useState(localTodos || [])
     const [inputValue, setInputValue] = useState('')
     const [unCompletedTodos, setUncompletedTodos] = useState(() => {
         const filtred = todos.filter(todo => !todo.isComlete)
@@ -18,6 +17,8 @@ const TodoList = () => {
     })
     const [showToolTip, setShowToolTip] = useState(false)
     const [disableBtn, setDisableBtn] = useState(true)
+
+    localStorage.setItem('todos', JSON.stringify(todos))
 
     const calculateUnCompletedTodos = () => {
         const filtredTodos = todos.filter(todo => !todo.isComlete)
@@ -50,11 +51,17 @@ const TodoList = () => {
         setTodos([
             ...todos,
             {
-                id: todos.length + 1,
+                id: uuidv4(),
                 text: inputValue,
                 isComlete: false
             }
         ])
+    }
+
+
+    const deleteTodoHandler = (id) => {
+        const filtred = todos.filter(todo => todo.id !== id)
+        setTodos(filtred)
     }
 
     const handleChangeInputValue = e => {
@@ -72,13 +79,15 @@ const TodoList = () => {
 
     return (
         <Container style={{margin: '0 auto', width: '600px'}}>
-            <h3 className='todo-header'>test I have {unCompletedTodos} uncompleted todos..</h3>
-            {todos.map((todo, id) => {
+            <h3 className='todo-header'>I have <span style={{color:'#f48fb1'}}>{unCompletedTodos} </span> uncompleted todos of {todos.length}</h3>
+            {todos.map((todo, idx) => {
                 return (
                     <TodoItem
-                        key={id}
+                        key={idx}
                         todo={todo}
                         toogleCompletedHandler={toogleCompletedHandler}
+                        deleteTodoHandler={deleteTodoHandler}
+                        handleChangeInputValue={handleChangeInputValue}
                     />
                 )
             })}
@@ -102,28 +111,22 @@ const TodoList = () => {
                         style={{}}
                         variant="primary"
                         type="submit"
-                        disabled={inputValue.length < 5}
+                        disabled={inputValue.length < 6}
                         ref={btn}
                     >
                         Submit
                     </Button>
-                    {
-                        disableBtn
-                            ? <Overlay target={btn.current} show={showToolTip} placement="bottom">
-                                {(props) => (
-                                    <Tooltip
-                                        className="tooltip"
-                                        {...props}
-                                    >
-                                        Minimum lenth of todos is 5 simbols..
-                                    </Tooltip>
-                                )}
-                            </Overlay>
-                            : <p> dasasddas </p>
-                    }
-
+                    <Overlay target={btn.current} show={showToolTip} placement="bottom">
+                        {(props) => (
+                            <Tooltip
+                                className="tooltip"
+                                {...props}
+                            >
+                                Minimum lenth of todos is 6 simbols..
+                            </Tooltip>
+                        )}
+                    </Overlay>
                 </div>
-
             </Form>
         </Container>
     )
