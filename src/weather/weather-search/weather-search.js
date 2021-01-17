@@ -1,14 +1,20 @@
 import React, {useContext} from 'react'
 import WeatherContext from '../contex/contex'
+import {Container} from 'react-bootstrap'
+import './weather-search.css'
 
 const WeatherSearch = () => {
-    const { fetchWeather, city } = useContext(WeatherContext)
+    const { fetchWeather } = useContext(WeatherContext)
     return (
-        <div>
+        <Container
+            className='search'
+        >
             <form
+                className='form'
                 onSubmit={fetchWeather}
             >
                 <input
+                    className='search'
                     type="text"
                     name='city'
                     autoComplete='off'
@@ -16,7 +22,7 @@ const WeatherSearch = () => {
                 <button>search</button>
             </form>
 
-        </div>
+        </Container>
     )
 }
 

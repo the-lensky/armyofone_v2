@@ -16,14 +16,16 @@ const Weather = () => {
     const [city, setCity] = useState('')
     const [error, setError] = useState(false)
 
-
     const fetchWeather = async (e) => {
 
         try {
             e.preventDefault()
             const location = e.target.elements.city.value
             if (!location) {
-                return setError('Please enter the name of the city'), setWeather(null)
+                return (
+                    setError('Please enter the name of the city'),
+                        setWeather(null)
+                )
             }
             const API_KEY = 'c4c2799d2e1ee7be23a5edba8cb75913'
             const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`
@@ -35,34 +37,21 @@ const Weather = () => {
         }
         catch (e) {
             setError(true)
-            console.log(`You've got error ${e}`)
+            console.log(`City not founded ${e}`)
         }
     }
 
-
-    // const setCityHandler = (e) => {
-    //     const city = e.target.value
-    //     setCity(city)
-    // }
-    //
-    // const onSubmitHandler = e => {
-    //     e.preventDefault()
-    //     if (city.trim()) {
-    //         setCityHandler(city)
-    //         setCityHandler('')
-    //     }
-    //
-    // }
+    useEffect(()=>{
+        fetchWeather()
+    },[])
 
     return (
-        <Container>
+        <Container className='wrapper'>
             <WeatherContext.Provider value={{fetchWeather, city, weather}}>
-                <div>JVUE
-                    <WeatherSearch/>
-                    {/*<Temperature />*/}
-                </div>
+                <WeatherSearch/>
+                { error !== null && <p>{error}</p> }
+                { weather !== null && <Temperature /> }
             </WeatherContext.Provider>
-
         </Container>
     )
 }
