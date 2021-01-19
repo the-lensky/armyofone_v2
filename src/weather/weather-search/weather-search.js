@@ -1,28 +1,28 @@
-import React, {useContext} from 'react'
+import React, { useContext} from 'react'
 import WeatherContext from '../contex/contex'
-import {Container} from 'react-bootstrap'
 import './weather-search.css'
 
 const WeatherSearch = () => {
+
+
     const { fetchWeather } = useContext(WeatherContext)
     return (
-        <Container
-            className='search'
-        >
+        <div className={'weather-search-wrapper'}>
             <form
-                className='form'
+                className='weather-form-search'
                 onSubmit={fetchWeather}
             >
                 <input
-                    className='search'
+                    id='testid'
+                    className='weather-search-input'
                     type="text"
                     name='city'
                     autoComplete='off'
                 />
-                <button>search</button>
+                <button
+                    className='weather-search-btn'>search</button>
             </form>
-
-        </Container>
+        </div>
     )
 }
 

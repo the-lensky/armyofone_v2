@@ -4,17 +4,20 @@ import axios from 'axios'
 import './weather.css'
 
 import WeatherContext from './contex/contex'
-import {Container} from 'react-bootstrap'
+import {Col, Row,Container} from 'react-bootstrap'
 
 import Temperature from './temperature'
 import WeatherSearch from './weather-search'
+import Location from './location/location'
+
 
 
 const Weather = () => {
 
-    const [weather, setWeather] = useState(null)
+    const [weather, setWeather] = useState('')
     const [city, setCity] = useState('')
     const [error, setError] = useState(false)
+    const [country, setCountry] = useState('')
 
     const fetchWeather = async (e) => {
 
@@ -32,6 +35,7 @@ const Weather = () => {
             const response = await axios.get(API_URL)
             setWeather(response.data.main)
             setCity(response.data.name)
+            setCountry(response.data.sys.country)
             console.log(response.data)
             console.log(response.data.name)
         }
@@ -41,18 +45,26 @@ const Weather = () => {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchWeather()
-    },[])
+    }, [])
 
-    return (
-        <Container className='wrapper'>
-            <WeatherContext.Provider value={{fetchWeather, city, weather}}>
-                <WeatherSearch/>
-                { error !== null && <p>{error}</p> }
-                { weather !== null && <Temperature /> }
-            </WeatherContext.Provider>
-        </Container>
+    return (<WeatherContext.Provider value={{fetchWeather, city, weather, country}}>
+            <Container className='wrapper'>
+                <Row>
+                    <Col>
+                        <Location />
+                    </Col>
+                    <Col>
+                        <WeatherSearch className=''/>
+                    </Col>
+                </Row>
+
+                {error !== null && <p>{error}</p>}
+                {weather !== null && <Temperature/>}
+
+            </Container>
+        </WeatherContext.Provider>
     )
 }
 

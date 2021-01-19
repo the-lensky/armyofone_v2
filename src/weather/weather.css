@@ -1,6 +1,7 @@
 .wrapper {
-    display: flex;
     background:linear-gradient(to bottom,#3F47BA,#1588CC );
-    min-height: 800px;
 }
 
+.WeatherSearch {
+    margin-left: auto;
+}
