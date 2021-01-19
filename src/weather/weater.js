@@ -9,6 +9,8 @@ import {Col, Row,Container} from 'react-bootstrap'
 import Temperature from './temperature'
 import WeatherSearch from './weather-search'
 import Location from './location/location'
+import Current from './current/current'
+import Stats from './stats/stats.'
 
 
 
@@ -57,6 +59,14 @@ const Weather = () => {
                     </Col>
                     <Col>
                         <WeatherSearch className=''/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Current />
+                    </Col>
+                    <Col>
+                        <Stats />
                     </Col>
                 </Row>
 

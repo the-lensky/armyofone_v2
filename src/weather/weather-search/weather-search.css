@@ -4,6 +4,7 @@
 
 .weather-search-wrapper {
     display: flex;
+    margin-top: 25px;
 }
 
 .weather-search-input{
