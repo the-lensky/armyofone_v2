@@ -106,7 +106,6 @@ const TodoList = () => {
                 <div
                     onMouseEnter={() => setShowToolTip(true)}
                     onMouseLeave={() => setShowToolTip(false)}>
-
                     <Button
                         className='btn'
                         style={{}}
@@ -117,11 +116,15 @@ const TodoList = () => {
                     >
                         Submit
                     </Button>
-                    <Overlay target={btn} show={showToolTip} placement="bottom">
-                            <Tooltip className="tooltip">
+                    <Overlay target={btn.current} show={showToolTip} placement="bottom">
+                        {(props) => (
+                            <Tooltip
+                                className="tooltip"
+                                {...props}
+                            >
                                 Minimum lenth of todos is 6 simbols..
                             </Tooltip>
-
+                        )}
                     </Overlay>
                 </div>
             </Form>

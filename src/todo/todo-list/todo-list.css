@@ -1,10 +1,17 @@
-.input {
-    width: 600px;
-    margin-top: 1.4rem;
-}
 
 .form {
     display: flex;
     width: 600px;
     margin-top: 1.4rem;
+}
+
+.wrap {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.alert {
+
+    margin-top: 1.5rem;
+    text-align: center;
 }
