@@ -1,24 +1,31 @@
 import React, {useContext} from 'react'
 import WeatherContext from '../contex/contex'
+import './temperature.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCloudSun} from '@fortawesome/free-solid-svg-icons'
+
 
 const Temperature = () => {
 
-    const {weather, city} = useContext(WeatherContext)
-    const {temp, humidity, pressure} = weather
+    const {weather} = useContext(WeatherContext)
+    const {temp} = weather
     return (
         <>
             <div className='temp-wraper'>
-                <h1>img</h1>
+                <div
+                    className='temp-img'
+                >
+                    <FontAwesomeIcon
+                        className='temp-icon'
+                        icon={faCloudSun}/>
+                </div>
+                <div>
+                    <p
+                        className='temp-degree'
+                    >{temp}<span>&deg;</span>
+                    </p>
+                </div>
             </div>
-            <div>
-                <p>{temp}</p>
-            </div>
-            {/*<div>*/}
-            {/*    <p>Humidity {humidity}</p>*/}
-            {/*</div>*/}
-            {/*<div>*/}
-            {/*    <p>pressure {pressure}</p>*/}
-            {/*</div>*/}
         </>
     )
 }

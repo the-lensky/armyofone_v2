@@ -17,6 +17,7 @@ const Weather = () => {
     const [weather, setWeather] = useState(null)
     const [city, setCity] = useState('')
     const [error, setError] = useState(false)
+    const [stats, setStats] = useState('')
     const [country, setCountry] = useState('')
 
     const fetchWeather = async (e) => {
@@ -31,11 +32,12 @@ const Weather = () => {
                 )
             }
             const API_KEY = 'c4c2799d2e1ee7be23a5edba8cb75913'
-            const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`
+            const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}&lang=ru`
             const response = await axios.get(API_URL)
             setWeather(response.data.main)
             setCity(response.data.name)
             setCountry(response.data.sys.country)
+            setStats(response.data)
             console.log(response.data)
             console.log(response.data.name)
         }
@@ -50,7 +52,7 @@ const Weather = () => {
     }, [])
 
     return (
-        <WeatherContext.Provider value={{fetchWeather, city, weather, country}}>
+        <WeatherContext.Provider value={{fetchWeather, city, weather, country, stats}}>
             <Container className='wrapper'>
                 <Row>
                     <Col>
@@ -61,11 +63,11 @@ const Weather = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col style={{borderRight:'1px solid white'}}>
                             {weather ? <Temperature /> : <div>NO DATA</div>}
                     </Col>
                     <Col>
-                        <Stats/>
+                        {weather && stats ? <Stats /> : <div>NO DATA</div>}
                     </Col>
                 </Row>
 
