@@ -9,6 +9,7 @@ const Stats = () => {
     const {sunrise, sunset} = stats.sys
     const windSpeed = stats.wind.speed
     const description = stats.weather[0].description
+    const clouds = stats.clouds.all
     console.log(description)
 
     let calcSunrise = moment.unix(sunrise)
@@ -23,33 +24,34 @@ const Stats = () => {
             <div className="stats-box">
                 <div className='stats-item'>
                     <div>{humidity}%</div>
-                    <div className='stats-desc'> Влажность </div>
+                    <div className='stats-desc'> Влажность</div>
                 </div>
                 <div className='stats-item'>
                     <div>{windSpeed} м/c</div>
-                    <div className='stats-desc'> Ветер </div>
-                    <div className='stats-item'>
-                        <div>{formatSunrise} </div>
-                        <div className='stats-desc'> Восход </div>
-                    </div>
+                    <div className='stats-desc'> Ветер</div>
                 </div>
-                <div className="stats-box">
-                    <div className='stats-item'>
-                        <div>RATATAT</div>
-                        {/*<div>{description} </div>*/}
-                        <span className='stats-desc'> Сейчас </span>
-                    </div>
-                    <div className='stats-item'>
-                        <div>{pressure} </div>
-                        <div className='stats-desc'> Давление </div>
-                    </div>
-                    <div className='stats-item'>
-                        <div>{formatSunset} </div>
-                        <div className='stats-desc'> Заход </div>
-                    </div>
+                <div className='stats-item'>
+                    <div>{formatSunrise} </div>
+                    <div className='stats-desc'> Восход</div>
+                </div>
+            </div>
+            <div className="stats-box">
+                <div className='stats-item'>
+                    <div> {clouds} %</div>
+                    <span className='stats-desc'> Облачность </span>
+                </div>
+                <div className='stats-item'>
+                    <div>{pressure} гПа</div>
+                    <div className='stats-desc'> Давление</div>
+                </div>
+                <div className='stats-item'>
+                    <div>{formatSunset} </div>
+                    <div className='stats-desc'> Заход</div>
                 </div>
             </div>
         </div>
+
+
     )
 }
 

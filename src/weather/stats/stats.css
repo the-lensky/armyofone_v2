@@ -5,11 +5,13 @@
 .stats-box {
     display: flex;
     justify-content: space-around;
+    flex-wrap: nowrap;
 }
 
 .stats-item{
     color:white;
     font-size: 25px;
+    min-width:75px;
 }
 
 .stats-desc {
