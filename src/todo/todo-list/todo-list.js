@@ -1,8 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react'
 import TodoItem from '../todo-item'
 import './todo-list.css'
-import {Tooltip, Overlay, Button, Container, Form} from 'react-bootstrap'
+import {Tooltip, Overlay, Button, Container, Form, Alert} from 'react-bootstrap'
 import {v4 as uuidv4} from 'uuid'
+import TodoInput from '../todo-input/todo-input'
 
 
 const TodoList = () => {
@@ -78,57 +79,46 @@ const TodoList = () => {
     }
 
     return (
-        <Container style={{margin: '0 auto', width: '600px'}}>
-            <h3 className='todo-header'>I have <span style={{color:'#f48fb1'}}>{unCompletedTodos} </span> uncompleted todos of {todos.length}</h3>
-            {todos.map((todo, idx) => {
-                return (
-                    <TodoItem
-                        key={idx}
-                        todo={todo}
-                        toogleCompletedHandler={toogleCompletedHandler}
-                        deleteTodoHandler={deleteTodoHandler}
-                        handleChangeInputValue={handleChangeInputValue}
-                    />
-                )
-            })}
-            <Form
-                className='form'
-                onSubmit={onSubmitHandler}>
-                <Form.Group
-                    style={{width: '600px'}}
-                >
-                    <Form.Control
-                        placeholder="Add todo.."
-                        value={inputValue}
-                        onChange={handleChangeInputValue}
-                        type="text"/>
-                </Form.Group>
-                <div
-                    onMouseEnter={() => setShowToolTip(true)}
-                    onMouseLeave={() => setShowToolTip(false)}>
-                    <Button
-                        className='btn'
-                        style={{}}
-                        variant="primary"
-                        type="submit"
-                        disabled={inputValue.length < 6}
-                        ref={btn}
+        <>
+            {
+                !todos.length
+                    ?
+                    <Container
+                        className='wrap'
                     >
-                        Submit
-                    </Button>
-                    <Overlay target={btn.current} show={showToolTip} placement="bottom">
-                        {(props) => (
-                            <Tooltip
-                                className="tooltip"
-                                {...props}
-                            >
-                                Minimum lenth of todos is 6 simbols..
-                            </Tooltip>
-                        )}
-                    </Overlay>
-                </div>
-            </Form>
-        </Container>
+                        <Alert
+                            className='alert'
+                            variant='danger'>
+                            Wow, you have no todos! :)
+                        </Alert>
+                    </Container>
+                    :
+                    <Container
+                        className='wrap'
+                    >
+                        <h3 className='todo-header'>I have <span
+                            style={{color: '#f48fb1'}}>{unCompletedTodos} </span> uncompleted
+                            todos of {todos.length}</h3>
+                        {todos.map((todo, idx) => {
+                            return (
+                                <TodoItem
+                                    key={idx}
+                                    todo={todo}
+                                    toogleCompletedHandler={toogleCompletedHandler}
+                                    deleteTodoHandler={deleteTodoHandler}
+                                    handleChangeInputValue={handleChangeInputValue}
+                                />
+                            )
+                        })}
+                    </Container>
+            }
+            <TodoInput
+                onSubmitHandler={onSubmitHandler}
+                handleChangeInputValue={handleChangeInputValue}
+                addTodoHandler={addTodoHandler}
+                inputValue={inputValue}
+            />
+        </>
     )
 }
 

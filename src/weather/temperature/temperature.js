@@ -7,18 +7,18 @@ const Temperature = () => {
     const {temp, humidity, pressure} = weather
     return (
         <>
-            <div>
-                <p>Weather forecast fo {city}</p>
+            <div className='temp-wraper'>
+                <h1>img</h1>
             </div>
             <div>
-                <p>Temperature {temp}</p>
+                <p>{temp}</p>
             </div>
-            <div>
-                <p>Humidity {humidity}</p>
-            </div>
-            <div>
-                <p>pressure {pressure}</p>
-            </div>
+            {/*<div>*/}
+            {/*    <p>Humidity {humidity}</p>*/}
+            {/*</div>*/}
+            {/*<div>*/}
+            {/*    <p>pressure {pressure}</p>*/}
+            {/*</div>*/}
         </>
     )
 }

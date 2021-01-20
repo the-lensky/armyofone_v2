@@ -1,7 +1,5 @@
 .wrapper {
+    margin-top: 35px;
     background:linear-gradient(to bottom,#3F47BA,#1588CC );
 }
 
-.WeatherSearch {
-    margin-left: auto;
-}

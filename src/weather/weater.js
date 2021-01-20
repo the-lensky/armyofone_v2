@@ -4,19 +4,17 @@ import axios from 'axios'
 import './weather.css'
 
 import WeatherContext from './contex/contex'
-import {Col, Row,Container} from 'react-bootstrap'
+import {Col, Row, Container} from 'react-bootstrap'
 
 import Temperature from './temperature'
 import WeatherSearch from './weather-search'
 import Location from './location/location'
-import Current from './current/current'
 import Stats from './stats/stats.'
-
 
 
 const Weather = () => {
 
-    const [weather, setWeather] = useState('')
+    const [weather, setWeather] = useState(null)
     const [city, setCity] = useState('')
     const [error, setError] = useState(false)
     const [country, setCountry] = useState('')
@@ -51,27 +49,28 @@ const Weather = () => {
         fetchWeather()
     }, [])
 
-    return (<WeatherContext.Provider value={{fetchWeather, city, weather, country}}>
+    return (
+        <WeatherContext.Provider value={{fetchWeather, city, weather, country}}>
             <Container className='wrapper'>
                 <Row>
                     <Col>
-                        <Location />
+                        <Location/>
                     </Col>
                     <Col>
-                        <WeatherSearch className=''/>
+                        <WeatherSearch/>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Current />
+                            {weather ? <Temperature /> : <div>NO DATA</div>}
                     </Col>
                     <Col>
-                        <Stats />
+                        <Stats/>
                     </Col>
                 </Row>
 
-                {error !== null && <p>{error}</p>}
-                {weather !== null && <Temperature/>}
+                {/*{error !== null && <p>{error}</p>}*/}
+                {/*{weather !== null && <Temperature/>}*/}
 
             </Container>
         </WeatherContext.Provider>
