@@ -7,8 +7,17 @@
 .temp-degree {
     color: white;
     font-size: 65px;
+    margin:0;
 }
 
+.temp-text {
+    margin-top: -10px;
+    color: white;
+}
+
+.temp-img{
+    height: 120px;
+}
 .temp-icon {
     color: white;
     font-size: 100px;

@@ -10,7 +10,7 @@ const Stats = () => {
     const windSpeed = stats.wind.speed
     const description = stats.weather[0].description
     const clouds = stats.clouds.all
-    console.log(description)
+
 
     let calcSunrise = moment.unix(sunrise)
     let formatSunrise = calcSunrise.format('HH.mm')
@@ -38,7 +38,7 @@ const Stats = () => {
             <div className="stats-box">
                 <div className='stats-item'>
                     <div> {clouds} %</div>
-                    <span className='stats-desc'> Облачность </span>
+                    <div className='stats-desc'> Облачность </div>
                 </div>
                 <div className='stats-item'>
                     <div>{pressure} гПа</div>
@@ -50,8 +50,6 @@ const Stats = () => {
                 </div>
             </div>
         </div>
-
-
     )
 }
 

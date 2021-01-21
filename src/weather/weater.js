@@ -64,7 +64,7 @@ const Weather = () => {
                 </Row>
                 <Row>
                     <Col style={{borderRight:'1px solid white'}}>
-                            {weather ? <Temperature /> : <div>NO DATA</div>}
+                            {weather && stats ? <Temperature /> : <div>NO DATA</div>}
                     </Col>
                     <Col>
                         {weather && stats ? <Stats /> : <div>NO DATA</div>}
