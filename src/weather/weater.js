@@ -4,7 +4,7 @@ import axios from 'axios'
 import './weather.css'
 
 import WeatherContext from './contex/contex'
-import {Col, Row, Container} from 'react-bootstrap'
+import {Col, Row, Alert, Container} from 'react-bootstrap'
 
 import Temperature from './temperature'
 import WeatherSearch from './weather-search'
@@ -50,6 +50,7 @@ const Weather = () => {
             }
             console.log(error)
             setInputValue('')
+            setError(false)
             console.log(response.data)
             console.log(response.data.name)
             console.log(error)
@@ -60,16 +61,17 @@ const Weather = () => {
         }
     }
 
-    useEffect(() => {
-        fetchWeather()
-    }, [])
+    // useEffect(() => {
+    //     fetchWeather()
+    // }, [])
 
     return (
         <WeatherContext.Provider value={{fetchWeather, city, weather, country, stats, inputValue, setInputValue}}>
             <Container className='wrapper'>
+                { error && <Alert variant='secondary'> sdfsdf </Alert>}
                 <Row>
                     <Col>
-                        {city && country? <Location/> : null}
+                        {city && country ? <Location/> : null}
                     </Col>
                     <Col>
                         {<WeatherSearch/>}
