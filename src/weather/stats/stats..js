@@ -8,7 +8,6 @@ const Stats = () => {
     const {pressure, humidity} = stats.main
     const {sunrise, sunset} = stats.sys
     const windSpeed = stats.wind.speed
-    const description = stats.weather[0].description
     const clouds = stats.clouds.all
 
 

@@ -10,6 +10,7 @@ import Temperature from './temperature'
 import WeatherSearch from './weather-search'
 import Location from './location/location'
 import Stats from './stats/stats.'
+import Error from './error/error'
 
 
 const Weather = () => {
@@ -19,31 +20,43 @@ const Weather = () => {
     const [error, setError] = useState(false)
     const [stats, setStats] = useState('')
     const [country, setCountry] = useState('')
+    const [inputValue, setInputValue] = useState('')
 
     const fetchWeather = async (e) => {
 
         try {
             e.preventDefault()
-            const location = e.target.elements.city.value
-            if (!location) {
-                return (
-                    setError('Please enter the name of the city'),
-                        setWeather(null)
-                )
-            }
+            // const location = inputValue
+            // console.log(location)
+            // // const location = e.target.elements.city.value
+            // if (inputValue == '') {
+            //     return (
+            //         setError(true),
+            //             setWeather(null)
+            //     )
+            // }
             const API_KEY = 'c4c2799d2e1ee7be23a5edba8cb75913'
-            const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}&lang=ru`
+            const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=${API_KEY}&lang=ru`
             const response = await axios.get(API_URL)
             setWeather(response.data.main)
             setCity(response.data.name)
             setCountry(response.data.sys.country)
             setStats(response.data)
+            if (inputValue == '') {
+                return (
+                    setError(true),
+                        setWeather(null)
+                )
+            }
+            console.log(error)
+            setInputValue('')
             console.log(response.data)
             console.log(response.data.name)
+            console.log(error)
         }
         catch (e) {
             setError(true)
-            console.log(`City not founded ${e}`)
+            console.log(`City not founded. Please, check your input field 😊`)
         }
     }
 
@@ -52,22 +65,22 @@ const Weather = () => {
     }, [])
 
     return (
-        <WeatherContext.Provider value={{fetchWeather, city, weather, country, stats}}>
+        <WeatherContext.Provider value={{fetchWeather, city, weather, country, stats, inputValue, setInputValue}}>
             <Container className='wrapper'>
                 <Row>
                     <Col>
-                        <Location/>
+                        {city && country? <Location/> : null}
                     </Col>
                     <Col>
-                        <WeatherSearch/>
+                        {<WeatherSearch/>}
                     </Col>
                 </Row>
                 <Row>
-                    <Col style={{borderRight:'1px solid white'}}>
-                            {weather && stats ? <Temperature /> : <div>NO DATA</div>}
+                    <Col style={{borderRight: '1px solid white'}}>
+                        {weather && stats ? <Temperature/> : <div></div>}
                     </Col>
                     <Col>
-                        {weather && stats ? <Stats /> : <div>NO DATA</div>}
+                        {weather && stats ? <Stats/> : <div></div>}
                     </Col>
                 </Row>
 

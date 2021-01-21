@@ -2,7 +2,7 @@ import React, {useContext, useEffect} from 'react'
 import WeatherContext from '../contex/contex'
 import './temperature.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCloudSun} from '@fortawesome/free-solid-svg-icons'
+import {faCloudSun, faSun, faSmog, faSnowflake, faCloudRain, faTemperatureLow} from '@fortawesome/free-solid-svg-icons'
 
 
 const Temperature = () => {
@@ -10,9 +10,69 @@ const Temperature = () => {
     const {temp} = weather
     const description = stats.weather[0].description
     console.log(stats)
+    console.log(description)
 
     const Capitalize = (description) => {
-        return description.charAt(0).toUpperCase() + description.slice(1);
+        return description.charAt(0).toUpperCase() + description.slice(1)
+    }
+
+    const icon = () => {
+        switch (description) {
+            case 'ясно':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faSun}/>
+                break
+            case 'небольшая облачность':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faSun}/>
+                break
+            case 'облачно с прояснениями':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faCloudSun}/>
+                break
+            case 'переменная облачность':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faCloudSun}/>
+                break
+            case 'туман':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faSmog}/>
+                break
+            case 'снег':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faSnowflake}/>
+                break
+            case 'небольшой снег':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faSnowflake}/>
+                break
+            case 'пасмурно':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faCloudRain}/>
+                break
+            case 'дождь':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faCloudRain}/>
+            case 'гроза':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faCloudRain}/>
+                break
+            default:
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faTemperatureLow}/>
+        }
+
     }
 
     return (
@@ -21,9 +81,7 @@ const Temperature = () => {
                 <div
                     className='temp-img'
                 >
-                    <FontAwesomeIcon
-                        className='temp-icon'
-                        icon={faCloudSun}/>
+                    {icon()}
                 </div>
                 <div
                     className='temp-img '

@@ -1,26 +1,35 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import WeatherContext from '../contex/contex'
 import './weather-search.css'
 
 const WeatherSearch = () => {
-    const {fetchWeather} = useContext(WeatherContext)
+
+    const {fetchWeather, inputValue, setInputValue} = useContext(WeatherContext)
+
+
+
+    console.log(inputValue)
     return (
         <div
             className='weather-search-wrapper'
         >
             <form
+                autoComplete="new-password"
                 className='weather-form-search'
                 onSubmit={fetchWeather}
             >
                 <input
+                    onChange={(e) => setInputValue(e.target.value)}
+                    value={inputValue}
+
                     className='weather-search-input'
                     type="text"
                     name='city'
-                    autoComplete='off'
+                    autoComplete="new-password"
                 />
                 <button
                     className='weather-search-btn'
-                >search
+                >Поиск
                 </button>
             </form>
 
