@@ -6,9 +6,6 @@ const WeatherSearch = () => {
 
     const {fetchWeather, inputValue, setInputValue} = useContext(WeatherContext)
 
-
-
-    console.log(inputValue)
     return (
         <div
             className='weather-search-wrapper'
@@ -32,7 +29,6 @@ const WeatherSearch = () => {
                 >Поиск
                 </button>
             </form>
-
         </div>
     )
 }

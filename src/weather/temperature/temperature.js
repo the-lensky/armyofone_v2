@@ -6,11 +6,13 @@ import {faCloudSun, faSun, faSmog, faSnowflake, faCloudRain, faTemperatureLow} f
 
 
 const Temperature = () => {
-    const {weather, stats} = useContext(WeatherContext)
-    const {temp} = weather
-    const description = stats.weather[0].description
-    console.log(stats)
-    console.log(description)
+
+    const {weatherData} = useContext(WeatherContext)
+    if(!Object.keys(weatherData).length) {
+        return null
+    }
+    const temp = weatherData.main.temp
+    const description = weatherData.weather[0].description
 
     const Capitalize = (description) => {
         return description.charAt(0).toUpperCase() + description.slice(1)

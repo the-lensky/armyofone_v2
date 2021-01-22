@@ -4,11 +4,15 @@ import moment from 'moment'
 import './stats.css'
 
 const Stats = () => {
-    const {stats} = useContext(WeatherContext)
-    const {pressure, humidity} = stats.main
-    const {sunrise, sunset} = stats.sys
-    const windSpeed = stats.wind.speed
-    const clouds = stats.clouds.all
+    const {weatherData} = useContext(WeatherContext)
+    if(!Object.keys(weatherData).length) {
+        return null
+    }
+
+    const {pressure, humidity} = weatherData.main
+    const {sunrise, sunset} = weatherData.sys
+    const windSpeed = weatherData.wind.speed
+    const clouds = weatherData.clouds.all
 
 
     let calcSunrise = moment.unix(sunrise)
