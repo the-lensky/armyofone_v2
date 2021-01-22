@@ -9,8 +9,6 @@ const Temperature = () => {
     const {weather, stats} = useContext(WeatherContext)
     const {temp} = weather
     const description = stats.weather[0].description
-    console.log(stats)
-    console.log(description)
 
     const Capitalize = (description) => {
         return description.charAt(0).toUpperCase() + description.slice(1)
@@ -72,7 +70,6 @@ const Temperature = () => {
                     className='temp-icon'
                     icon={faTemperatureLow}/>
         }
-
     }
 
     return (

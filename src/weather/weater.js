@@ -10,7 +10,7 @@ import Temperature from './temperature'
 import WeatherSearch from './weather-search'
 import Location from './location/location'
 import Stats from './stats/stats.'
-import Error from './error/error'
+import Forecast from './forecast/forecas'
 
 
 const Weather = () => {
@@ -26,15 +26,6 @@ const Weather = () => {
 
         try {
             e.preventDefault()
-            // const location = inputValue
-            // console.log(location)
-            // // const location = e.target.elements.city.value
-            // if (inputValue == '') {
-            //     return (
-            //         setError(true),
-            //             setWeather(null)
-            //     )
-            // }
             const API_KEY = 'c4c2799d2e1ee7be23a5edba8cb75913'
             const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=${API_KEY}&lang=ru`
             const response = await axios.get(API_URL)
@@ -68,7 +59,7 @@ const Weather = () => {
     return (
         <WeatherContext.Provider value={{fetchWeather, city, weather, country, stats, inputValue, setInputValue}}>
             <Container className='wrapper'>
-                { error && <Alert variant='secondary'> sdfsdf </Alert>}
+                {error && <Alert variant='secondary'> sdfsdf </Alert>}
                 <Row>
                     <Col>
                         {city && country ? <Location/> : null}
@@ -84,6 +75,9 @@ const Weather = () => {
                     <Col>
                         {weather && stats ? <Stats/> : <div></div>}
                     </Col>
+                </Row>
+                <Row>
+                    {city && country ? <Forecast /> : null}
                 </Row>
 
                 {/*{error !== null && <p>{error}</p>}*/}
