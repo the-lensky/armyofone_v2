@@ -1,14 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react'
 import TodoItem from '../todo-item'
 import './todo-list.css'
-import {Tooltip, Overlay, Button, Container, Form, Alert} from 'react-bootstrap'
+import {Container, Alert} from 'react-bootstrap'
 import {v4 as uuidv4} from 'uuid'
 import TodoInput from '../todo-input/todo-input'
 
 
 const TodoList = () => {
 
-    const localTodos = JSON.parse(localStorage.getItem('todos')) || {}
+    const localTodos = JSON.parse(localStorage.getItem('todos'))
 
     const [todos, setTodos] = useState(localTodos || [])
     const [inputValue, setInputValue] = useState('')
@@ -16,7 +16,7 @@ const TodoList = () => {
         const filtred = todos.filter(todo => !todo.isComlete)
         return filtred.length
     })
-    const [showToolTip, setShowToolTip] = useState(false)
+    // const [showToolTip, setShowToolTip] = useState(false)
     const [disableBtn, setDisableBtn] = useState(true)
 
     localStorage.setItem('todos', JSON.stringify(todos))
@@ -97,7 +97,7 @@ const TodoList = () => {
                         className='wrap'
                     >
                         <h3 className='todo-header'>I have <span
-                            style={{color: '#f48fb1'}}>{unCompletedTodos} </span> uncompleted
+                            style={{color: '#f48fb1'}}> {unCompletedTodos} </span> uncompleted
                             todos of {todos.length}</h3>
                         {todos.map((todo, idx) => {
                             return (

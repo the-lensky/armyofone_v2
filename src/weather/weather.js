@@ -46,17 +46,16 @@ const Weather = () => {
     }
 
 
-
     return (
-        <WeatherContext.Provider value={{fetchWeather, weatherData, inputValue, setInputValue,forecast }}>
+        <WeatherContext.Provider value={{fetchWeather, weatherData, inputValue, setInputValue, forecast}}>
             <Container className='wrapper'>
                 {error && <Alert variant='secondary'> sdfsdf </Alert>}
                 <Row>
                     <Col>
-                        {weatherData ? <Location /> : null}
+                        {weatherData ? <Location/> : null}
                     </Col>
                     <Col>
-                        <WeatherSearch />
+                        <WeatherSearch/>
                     </Col>
                 </Row>
                 <Row>
@@ -68,7 +67,7 @@ const Weather = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Forecast />
+                    <Forecast/>
                 </Row>
 
                 {/*{error !== null && <p>{error}</p>}*/}

@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react'
 import {Button, Form, Overlay, Container, Tooltip} from 'react-bootstrap'
 import './todo-input.css'
 
-const TodoInput = ({onSubmitHandler, handleChangeInputValue, addTodoHandler, inputValue}) => {
+const TodoInput = ({onSubmitHandler, handleChangeInputValue,inputValue}) => {
     const btn = useRef(null)
     const [showToolTip, setShowToolTip] = useState(false)
 
