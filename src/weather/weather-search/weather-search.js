@@ -6,8 +6,6 @@ const WeatherSearch = () => {
 
     const {fetchWeather, inputValue, setInputValue} = useContext(WeatherContext)
 
-
-
     console.log(inputValue)
     return (
         <div

@@ -1,0 +1,32 @@
+.forecast-item {
+  display: flex;
+  justify-content: space-around;
+    p {
+      color:white;
+      font-size: 18px;
+    }
+  div {
+    width: 100px;
+    text-align: center;
+  }
+}
+.forecast-icon {
+  font-size: 45px;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.forecast-stats-description{
+  margin-top: -10px ;
+  color: #c1bebe !important;
+  font-size: 15px !important;
+}
+
+.forecast-item-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

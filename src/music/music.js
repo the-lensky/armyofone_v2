@@ -18,7 +18,7 @@ const Music = () => {
     })
     const [libraryStatus, setLibraryStatus] = useState(false)
 
-
+console.log(currentSong)
 
     const timeUpdateHandler = (e) => {
         const currentTime = e.target.currentTime

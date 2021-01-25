@@ -10,7 +10,7 @@ const LibrarySong = ({song, setSongs, setCurrentSong, songs, audioRef, isPlaying
 
     return (
         <div
-            className={`library-song ${song.active ? ' selected' : ''}`}
+            className={`library-song ${song.active ? 'selected' : ''}`}
             onClick={songSelectHandler}
         >
             <img
@@ -21,7 +21,6 @@ const LibrarySong = ({song, setSongs, setCurrentSong, songs, audioRef, isPlaying
                 <h3>{song.name}</h3>
                 <h4>{song.artist}</h4>
             </div>
-
         </div>
     )
 }

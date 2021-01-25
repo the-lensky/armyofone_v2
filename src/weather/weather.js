@@ -38,6 +38,7 @@ const Weather = () => {
             setWeatherData(responseW.data)
             setForecast(responseF.data.list)
             setInputValue('')
+            setError(false)
         }
         catch (e) {
             setError(true)
@@ -49,7 +50,7 @@ const Weather = () => {
     return (
         <WeatherContext.Provider value={{fetchWeather, weatherData, inputValue, setInputValue, forecast}}>
             <Container className='wrapper'>
-                {error && <Alert variant='secondary'> sdfsdf </Alert>}
+                {error && <Alert variant='secondary'> Пожалуйста, введите город </Alert>}
                 <Row>
                     <Col>
                         {weatherData ? <Location/> : null}
@@ -67,7 +68,7 @@ const Weather = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Forecast/>
+                    {weatherData ? <Forecast /> : null}
                 </Row>
 
                 {/*{error !== null && <p>{error}</p>}*/}

@@ -68,6 +68,10 @@ const Temperature = () => {
                 return <FontAwesomeIcon
                     className='temp-icon'
                     icon={faCloudRain}/>
+            case 'небольшой дождь':
+                return <FontAwesomeIcon
+                    className='temp-icon'
+                    icon={faCloudRain}/>
             case 'гроза':
                 return <FontAwesomeIcon
                     className='temp-icon'

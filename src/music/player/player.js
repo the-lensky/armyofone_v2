@@ -21,6 +21,7 @@ const Player = ({setSongs, setCurrentSong, songs, audioRef, currentSong, isPlayi
         if (direction === 'skip-forward') {
             await setCurrentSong(songs[currentIndex + 1 % songs.length])
             activeLibraryHandler(songs[currentIndex + 1 % songs.length])
+
         }
         if (direction === 'skip-back') {
             if ((currentIndex - 1) % songs.length === -1) {

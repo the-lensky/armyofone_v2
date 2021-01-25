@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import Forecast from './weater'
-=======
-import Forecast from './weather-search'
->>>>>>> origin/working
+import Forecast from './forecast'
 
 export default Forecast
