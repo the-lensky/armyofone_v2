@@ -1,16 +1,17 @@
 .forecast-item {
   border-radius: 7px;
-  width: 960px;
-  margin: 0 auto 15px auto ;
+  margin: 15px 0 0 0;
   background-color: rgb(44, 97, 162);
 
   display: flex;
   justify-content: space-around;
-    p {
-      color:white;
-      font-size: 18px;
-      margin: 0;
-    }
+
+  p {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+  }
+
   div {
     width: 100px;
     text-align: center;
@@ -19,6 +20,7 @@
     justify-content: center;
   }
 }
+
 .forecast-icon {
   font-size: 40px;
   justify-content: center;
@@ -28,13 +30,13 @@
   align-items: center;
 }
 
-.forecast-stats-description{
-  margin-top: -10px ;
+.forecast-stats-description {
+  margin-top: -10px;
   color: #c1bebe !important;
   font-size: 15px !important;
 }
 
-.forecast-item-icon{
+.forecast-item-icon {
   display: flex;
   justify-content: center;
   align-items: center;
