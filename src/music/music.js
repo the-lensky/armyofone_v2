@@ -1,76 +1,81 @@
 import React, {useRef, useState} from 'react'
 import './music.scss'
-import {getMusic} from './data'
+//Import data
+import chillhop from "./data";
+//Util
+import { playAudio } from "./util";
 import Player from './player/player'
 import Song from './song/song'
 import Library from './library/library'
 import Nav from './nav/nav'
 
 const Music = () => {
-    const audioRef = useRef(null)
+    const audioRef = useRef(null);
 
-    const [songs, setSongs] = useState(getMusic())
-    const [currentSong, setCurrentSong] = useState(songs[1])
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [songs, setSongs] = useState(chillhop());
+    const [currentSong, setCurrentSong] = useState(songs[0]);
+    const [isPlaying, setIsPlaying] = useState(false);
     const [songInfo, setSongInfo] = useState({
         currentTime: 0,
-        duration: 0
-    })
-    const [libraryStatus, setLibraryStatus] = useState(false)
-
-console.log(currentSong)
+        duration: 0,
+        animationPercentage: 0,
+        volume: 0,
+    });
+    const [libraryStatus, setLibraryStatus] = useState(false);
 
     const timeUpdateHandler = (e) => {
-        const currentTime = e.target.currentTime
-        const duration = e.target.duration
-        setSongInfo({...songInfo, currentTime: currentTime, duration: duration})
-    }
+        const current = e.target.currentTime;
+        const duration = e.target.duration;
 
+        const roundedCurrent = Math.round(current);
+        const roundedDuration = Math.round(duration);
+        const percentage = Math.round((roundedCurrent / roundedDuration) * 100);
+        setSongInfo({
+            ...songInfo,
+            currentTime: current,
+            duration: duration,
+            animationPercentage: percentage,
+            volume: e.target.volume,
+        });
+    };
     const songEndHandler = async () => {
-        const currentIndex = songs.findIndex((song) => song.id === currentSong.id)
-        await setCurrentSong(songs[currentIndex + 1 % songs.length])
-        if (isPlaying) audioRef.current.play()
-
-    }
-
-
+        let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+        await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+        playAudio(isPlaying, audioRef);
+        return;
+    };
     return (
-        <div className='music-wrap'>
-            <Nav
-                libraryStatus={libraryStatus}
-                setLibraryStatus={setLibraryStatus}
+        <div className={`App ${libraryStatus ? "library-active" : ""}`}>
+            <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
+            <Song isPlaying={isPlaying} currentSong={currentSong} />
+            <Player
+                audioRef={audioRef}
+                setIsPlaying={setIsPlaying}
+                currentSong={currentSong}
+                isPlaying={isPlaying}
+                songInfo={songInfo}
+                setSongInfo={setSongInfo}
+                songs={songs}
+                setSongs={setSongs}
+                setCurrentSong={setCurrentSong}
             />
             <Library
                 songs={songs}
-                setSongs={setSongs}
                 setCurrentSong={setCurrentSong}
                 audioRef={audioRef}
                 isPlaying={isPlaying}
+                setSongs={setSongs}
                 libraryStatus={libraryStatus}
-
-            />
-            <Song currentSong={currentSong}/>
-            <Player
-                songs={songs}
-                setCurrentSong={setCurrentSong}
-                songInfo={songInfo}
-                setSongInfo={setSongInfo}
-                audioRef={audioRef}
-                currentSong={currentSong}
-                setIsPlaying={setIsPlaying}
-                isPlaying={isPlaying}
-                setSongs={setSongs}
             />
             <audio
-                src={currentSong.audio}
-                ref={audioRef}
-                onTimeUpdate={timeUpdateHandler}
                 onLoadedMetadata={timeUpdateHandler}
+                onTimeUpdate={timeUpdateHandler}
+                ref={audioRef}
+                src={currentSong.audio}
                 onEnded={songEndHandler}
-            >
-            </audio>
+            ></audio>
         </div>
-    )
+    );
 }
 
 export default Music

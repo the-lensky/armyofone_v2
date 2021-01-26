@@ -1,17 +1,18 @@
-import React from 'react'
+import React from "react";
 import './song.scss'
 
-const Song = ({currentSong}) => {
+const Song = ({ currentSong, isPlaying }) => {
     return (
-        <div className='song-container'>
+        <div className="song-container">
             <img
+                className={isPlaying ? "rotateSong" : ""}
                 src={currentSong.cover}
-                alt={currentSong.name}>
-            </img>
+                alt=""
+            />
             <h2>{currentSong.name}</h2>
             <h3>{currentSong.artist}</h3>
         </div>
-    )
-}
+    );
+};
 
-export default Song
+export default Song;

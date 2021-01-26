@@ -1,20 +1,25 @@
-import React from 'react'
+import React from "react";
 import './nav.scss'
-import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faMusic } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMusic } from "@fortawesome/free-solid-svg-icons";
 
-const Nav = ({setLibraryStatus, libraryStatus}) => {
+const Nav = ({ setLibraryStatus, libraryStatus }) => {
+    const openLibraryHandler = () => {
+        setLibraryStatus(!libraryStatus);
+    };
+
     return (
-        <nav className='nav'>
-            <h1>WAWES</h1>
+        <nav className='music-nav'>
+            <h1>Waves</h1>
             <button
-                onClick={() => setLibraryStatus(!libraryStatus)}
+                className={libraryStatus ? "library-active" : ""}
+                onClick={openLibraryHandler}
             >
                 Library
-                <FontAwesomeIcon icon={faMusic} />
+                <FontAwesomeIcon icon={faMusic}></FontAwesomeIcon>
             </button>
         </nav>
-    )
-}
+    );
+};
 
-export default Nav
+export default Nav;
