@@ -2,9 +2,12 @@ import React from 'react'
 import './forecast-item.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCloudRain, faCloudSun, faSmog, faSnowflake, faSun, faTemperatureLow} from '@fortawesome/free-solid-svg-icons'
+import moment from 'moment'
 
 const ForecastItem = ({unit, dataIs}) => {
-    console.log(unit.dt_txt)
+    let calcDayMonth = moment.unix(unit.dt)
+    let formatcalcDayMonth = calcDayMonth.format('D.M')
+    console.log(unit)
     const description = unit.weather[0].description
     const data = (unit) => {
         let date = new Date(unit.dt * 1000);
@@ -87,15 +90,14 @@ const ForecastItem = ({unit, dataIs}) => {
         >
             <div>
                 <p> {dataIs(unit.dt)} </p>
-                <p className='forecast-stats-description'> Дата </p>
-                <p className='forecast-stats-description'>asd {data}</p>
+                <p className='forecast-stats-description'>{formatcalcDayMonth}</p>
             </div>
             <div
                 className='forecast-item-icon'>
                 {icon()}
             </div>
             <div>
-                <p> {unit.main.temp} </p>
+                <p> {Math.round(unit.main.temp)} </p>
                 <p className='forecast-stats-description'>℃ </p>
             </div>
             <div>

@@ -1,17 +1,26 @@
 .forecast-item {
+  border-radius: 7px;
+  width: 960px;
+  margin: 0 auto 15px auto ;
+  background-color: rgb(44, 97, 162);
+
   display: flex;
   justify-content: space-around;
     p {
       color:white;
       font-size: 18px;
+      margin: 0;
     }
   div {
     width: 100px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 .forecast-icon {
-  font-size: 45px;
+  font-size: 40px;
   justify-content: center;
   text-align: center;
   color: white;
