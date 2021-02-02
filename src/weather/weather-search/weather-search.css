@@ -1,0 +1,28 @@
+.weather-form-search {
+    margin-left: auto;
+}
+
+.weather-search-wrapper {
+    display: flex;
+    margin-top: 25px;
+}
+
+.weather-search-input{
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: 0px solid;
+    border-bottom: 1px solid white;
+}
+
+.weather-search-btn {
+    background-color: transparent;
+    color: white;
+    border: 0 ;
+    border-bottom: 1px solid white;
+}
+
+.weather-search-btn:focus {
+    outline: 0 !important;
+}
+

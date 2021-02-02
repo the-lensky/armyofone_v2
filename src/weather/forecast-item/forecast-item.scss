@@ -1,0 +1,43 @@
+.forecast-item {
+  border-radius: 7px;
+  margin: 15px 0 0 0;
+  background-color: rgb(44, 97, 162);
+
+  display: flex;
+  justify-content: space-around;
+
+  p {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  div {
+    width: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.forecast-icon {
+  font-size: 40px;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.forecast-stats-description {
+  margin-top: -10px;
+  color: #c1bebe !important;
+  font-size: 15px !important;
+}
+
+.forecast-item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

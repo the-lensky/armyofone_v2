@@ -1,0 +1,29 @@
+.temp-wraper {
+    display: flex;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+.temp-degree {
+    color: white;
+    font-size: 65px;
+    margin:0;
+    text-align: center;
+}
+
+.temp-text {
+    margin-top: -10px;
+    color: white;
+}
+
+.temp-img{
+    height: 120px;
+}
+.temp-icon {
+    color: white;
+    font-size: 100px;
+}
+.temp-circle{
+    color: white;
+    font-size: 12px;
+}

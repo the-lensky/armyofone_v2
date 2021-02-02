@@ -1,0 +1,18 @@
+.location-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.location-city {
+    padding-left: 15px;
+    color: white;
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+.location-date {
+    padding-left: 15px;
+    color: white;
+    font-size: 19px;
+    margin-top: -3px;
+}

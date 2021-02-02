@@ -1,0 +1,19 @@
+.btn-center {
+    position: absolute;
+    top:50%;
+    right: 50%;
+}
+
+.icon {
+    cursor: pointer;
+    color: #cd0b0b;
+    opacity: 0.6;
+}
+
+.icon:hover{
+    cursor: pointer;
+    color: #cd0b0b;
+    opacity: 1;
+    width: 24px;
+    height: 24px;
+}

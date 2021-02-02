@@ -1,0 +1,22 @@
+.stats-wrap {
+    display: flex;
+    flex-direction: column;
+}
+.stats-box {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.stats-item{
+    margin-bottom: 5px;
+    color:white;
+    font-size: 24px;
+    width:101px;
+}
+
+.stats-desc {
+    margin-top: -3px;
+    color: #c1bebe;
+    font-size: 15px;
+}

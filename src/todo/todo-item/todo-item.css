@@ -1,0 +1,61 @@
+.todoItem {
+    display: flex;
+    align-content: center;
+    margin: 0 0 0 3rem;
+    padding: 0;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    font-size: 1.2rem;
+}
+
+.list-group {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.todo-header {
+    margin: 1.5rem 0;
+    color: cornflowerblue;
+}
+
+.tooltip [class$="inner"] {
+    background-color: #fff;
+    border: 1px solid #b8daff;
+    color: black;
+}
+
+.tooltip [class$="arrow"]:before {
+    border-bottom-color: #b8daff !important;
+}
+
+.btn[disabled] {
+    cursor: pointer;
+}
+
+.icon {
+    box-sizing: border-box;
+    margin-left: auto;
+
+}
+
+.xcircle {
+    color: #cd0b0b;
+    opacity: 0.6;
+}
+
+.xcircle:hover {
+    cursor: pointer;
+    color: #cd0b0b;
+    opacity: 1;
+    width: 25px;
+    height: 25px;
+}
+
