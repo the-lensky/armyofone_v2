@@ -6,10 +6,7 @@ import NavBar from '../nav-bar'
 import Weather from '../weather'
 import UserTable from '../user-table'
 import TodoList from '../todo/todo-list'
-import Music from '../music'
-
-
-
+// import Music from '../music'
 
 function App() {
     return (
@@ -20,7 +17,7 @@ function App() {
                 <Route exact path='/weather' component={Weather}/>
                 <Route exact path='/todolist' component={TodoList}/>
                 <Route exact path='/' component={AboutMe}/>
-                <Route exact path='/music' component={Music}/>
+                {/*<Route exact path='/music' component={Music}/>*/}
             </div>
         </div>
     )
