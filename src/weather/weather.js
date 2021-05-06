@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 
 import './weather.css'
@@ -70,9 +70,6 @@ const Weather = () => {
                 <Row>
                     {weatherData ? <Forecast /> : null}
                 </Row>
-
-                {/*{error !== null && <p>{error}</p>}*/}
-                {/*{weather !== null && <Temperature/>}*/}
 
             </Container>
         </WeatherContext.Provider>
